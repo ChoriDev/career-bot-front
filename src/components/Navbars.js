@@ -5,11 +5,10 @@ import logo from "../images/logo.png";
 function Navbars() {
   return (
     <Navbar className="bg-body-tertiary">
-      <div className={styles.iconBox}>
-        <Navbar.Brand href="/">
-          <img className={styles.logo} src={logo} alt="로고 아이콘" />
-        </Navbar.Brand>
-      </div>
+      <Navbar.Brand href="/">
+        <img className={styles.logo} src={logo} alt="로고 아이콘" />{" "}
+        진로문장완성검사 진단 서비스
+      </Navbar.Brand>
     </Navbar>
   );
 }

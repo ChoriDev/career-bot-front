@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Card, ListGroup, Button } from "react-bootstrap";
 import Navbars from "../components/Navbars";
+import styles from "../css/Home.module.css";
 
 function Home() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function Home() {
   return (
     <>
       <Navbars />
-      <Card>
+      <Card className={styles.notice}>
         <Card.Header>
           검사를 시작하기 전에 유의사항을 꼼꼼히 읽어주세요.
         </Card.Header>
@@ -32,7 +33,7 @@ function Home() {
             4️⃣ 시간 제한은 없으나 너무 오래 생각하지 말고 빠르게 작성해주세요.
           </ListGroup.Item>
         </ListGroup>
-        <Card.Footer>
+        <Card.Footer className={styles.goToTestBtnBox}>
           <Button onClick={goToTest}>검사 시작하기</Button>
         </Card.Footer>
       </Card>

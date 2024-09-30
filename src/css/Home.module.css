@@ -1,0 +1,10 @@
+.notice {
+  margin-top: 24px;
+  margin-left: 24%;
+  margin-right: 24%;
+}
+
+.goToTestBtnBox {
+  display: flex;
+  justify-content: flex-end;
+}

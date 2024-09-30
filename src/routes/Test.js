@@ -1,17 +1,20 @@
 import Navbars from "../components/Navbars";
-import { Table, Form } from "react-bootstrap";
+import { Card, Table, Form } from "react-bootstrap";
+import styles from "../css/Test.module.css";
 
 function Test() {
   return (
     <>
       <Navbars />
-      <div>
-        다음에 기술된 문항들은 뒷부분 또는 중간이 빠져있습니다. 각 문장을
-        읽으면서 맨 먼저 떠오르는 생각이나 느낌을 빈칸에 기록하여 문장이 되도록
-        완성하여 주십시오. 시간 제한은 없으나 가능한 한 빨리 기록하여 주십시오.
-        만약 문장을 읽고 생각이나 느낌이 떠오르지 않을 때는 다른 문장을 먼저
-        완성하셔도 됩니다.
-      </div>
+      <Card className={styles.guide}>
+        <Card.Body>
+          다음에 기술된 문항들은 뒷부분 또는 중간이 빠져있습니다. 각 문장을
+          읽으면서 맨 먼저 떠오르는 생각이나 느낌을 빈칸에 기록하여 문장이
+          되도록 완성하여 주십시오. 시간 제한은 없으나 가능한 한 빨리 기록하여
+          주십시오. 만약 문장을 읽고 생각이나 느낌이 떠오르지 않을 때는 다른
+          문장을 먼저 완성하셔도 됩니다.
+        </Card.Body>
+      </Card>
       <Table striped bordered>
         <tbody>
           <tr>

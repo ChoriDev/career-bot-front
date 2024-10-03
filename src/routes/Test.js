@@ -1,8 +1,15 @@
+import { useNavigate } from "react-router-dom";
+import { Card, Table, Form, Button } from "react-bootstrap";
 import Navbars from "../components/Navbars";
-import { Card, Table, Form } from "react-bootstrap";
 import styles from "../css/Test.module.css";
 
 function Test() {
+  const navigate = useNavigate();
+
+  const goToResult = () => {
+    navigate(`/result`);
+  };
+
   return (
     <>
       <Navbars />
@@ -280,6 +287,9 @@ function Test() {
           </tr>
         </tbody>
       </Table>
+      <div className={styles.submitBtnBox}>
+        <Button onClick={goToResult}>제출하기</Button>
+      </div>
     </>
   );
 }

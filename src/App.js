@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./routes/Home";
 import Test from "./routes/Test";
+import Result from "./routes/Result";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route path={"/test"} element={<Test />} />
+        <Route path={"/result"} element={<Result />} />
       </Routes>
     </div>
   );

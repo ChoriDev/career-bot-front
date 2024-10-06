@@ -32,10 +32,6 @@ function Home() {
           <ListGroup.Item>
             4️⃣ 시간 제한은 없으나 너무 오래 생각하지 말고 빠르게 작성해주세요.
           </ListGroup.Item>
-          <ListGroup.Item>
-            5️⃣ 문항을 보고 떠오르는 생각이 없다면 다른 문항을 먼저 작성해도
-            됩니다.
-          </ListGroup.Item>
         </ListGroup>
         <Card.Footer className={styles.goToTestBtnBox}>
           <Button onClick={goToTest}>검사 시작하기</Button>

@@ -28,7 +28,13 @@ npm install react-bootstrap bootstrap
 npm install axios
 ```
 
-6. 리액트 실행
+6. Redux Toolkit 및 react-redux 설치
+
+```shell
+npm install @reduxjs/toolkit react-redux
+```
+
+7. 리액트 실행
 
 ```shell
 npm start

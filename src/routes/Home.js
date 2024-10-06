@@ -1,4 +1,8 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { save } from "../redux/slices/sentences";
+import useAxios from "../hooks/useAxios";
 import { Card, ListGroup, Button } from "react-bootstrap";
 import Navbars from "../components/Navbars";
 import styles from "../css/Home.module.css";
@@ -9,6 +13,25 @@ function Home() {
   const goToTest = () => {
     navigate(`/test`);
   };
+
+  const dispatch = useDispatch();
+
+  const { responseData, error, isLoading, request } = useAxios({
+    method: "GET",
+    url: `api/result/`,
+  });
+
+  useEffect(() => {
+    request();
+  }, []);
+
+  useEffect(() => {
+    if (responseData && Array.isArray(responseData)) {
+      responseData.forEach((sentence) => {
+        dispatch(save(sentence));
+      });
+    }
+  }, [responseData]);
 
   return (
     <>

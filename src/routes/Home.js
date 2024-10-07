@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { save } from "../redux/slices/sentences";
+import { save } from "../redux/slices/questions";
 import useAxios from "../hooks/useAxios";
 import { Card, ListGroup, Button } from "react-bootstrap";
 import Navbars from "../components/Navbars";
@@ -18,7 +18,7 @@ function Home() {
 
   const { responseData, error, isLoading, request } = useAxios({
     method: "GET",
-    url: `api/result/`,
+    url: `api/questions/`,
   });
 
   useEffect(() => {

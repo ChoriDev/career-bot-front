@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const sentences = createSlice({
-  name: "sentences",
+const answers = createSlice({
+  name: "answers",
   initialState: [],
   reducers: {
     save: (state, action) => {
@@ -10,5 +10,5 @@ const sentences = createSlice({
   },
 });
 
-export const { save, clear } = sentences.actions;
-export default sentences.reducer;
+export const { save, clear } = answers.actions;
+export default answers.reducer;

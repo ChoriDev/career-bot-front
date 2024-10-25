@@ -22,19 +22,25 @@ npm install react-router-dom
 npm install react-bootstrap bootstrap
 ```
 
-5. axios 설치
+5. 리액트 원형 프로그래스바 설치
+
+``` shell
+npm install --save react-circular-progressbar
+```
+
+6. axios 설치
 
 ```shell
 npm install axios
 ```
 
-6. Redux Toolkit 및 react-redux 설치
+7. Redux Toolkit 및 react-redux 설치
 
 ```shell
 npm install @reduxjs/toolkit react-redux
 ```
 
-7. 리액트 실행
+8. 리액트 실행
 
 ```shell
 npm start

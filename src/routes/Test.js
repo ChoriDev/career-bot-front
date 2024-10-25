@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useAxios from "../hooks/useAxios";
-import { Card, Form, Button } from "react-bootstrap";
+import { Card, Form, Button, Modal, Spinner } from "react-bootstrap";
 import Navbars from "../components/Navbars";
 import styles from "../css/Test.module.css";
 
 function Test() {
+  const studentId = localStorage.getItem("student-id");
+
   const navigate = useNavigate();
   const questions = useSelector((state) => state.questions);
 
   const [currentIndex, setCurrentIndex] = useState(0); // 현재 문항 인덱스
   const [userResponses, setUserResponses] = useState(["", ""]); // 사용자의 답변 (최대 2개)
-  const studentId = localStorage.getItem("student-id");
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const { responseData, error, isLoading, request } = useAxios({
     method: "POST",
@@ -29,23 +31,23 @@ function Test() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await submitResponse(); // 서버 전송 함수
-    setUserResponses(["", ""]); // 입력 필드 초기화
+    // 서버 전송 및 응답 대기
+    await submitResponse();
 
-    // 다음 문항으로 이동
+    // 마지막 문항인지 확인
     if (currentIndex < questions.length - 1) {
       setCurrentIndex(currentIndex + 1);
+      setUserResponses(["", ""]); // 입력 필드 초기화
     } else {
-      // 모든 문항을 완료하면 결과 페이지로 이동
+      // 마지막 문항의 응답을 받은 후 결과 페이지로 이동
       navigate("/result");
     }
   };
 
   const submitResponse = async () => {
-    console.log("작성 중");
-    // 서버에 사용자의 답변 전송하는 API 호출
-
-    request();
+    setIsModalVisible(true); // 모달 표시
+    await request(); // 서버에 사용자의 답변 전송
+    setIsModalVisible(false); // 응답을 받은 후 모달 숨김
   };
 
   const handleInputChange = (index, value) => {
@@ -105,6 +107,16 @@ function Test() {
           )}
         </Card.Body>
       </Card>
+      <Modal show={isModalVisible} backdrop="static" keyboard={false} centered>
+        <Modal.Body className={styles.modalBody}>
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          <p className={styles.loadingNotice}>
+            답변을 서버로 전송 중입니다. 잠시만 기다려 주세요...
+          </p>
+        </Modal.Body>
+      </Modal>
     </>
   );
 }

@@ -15,3 +15,14 @@
 .secondInput {
   margin-top: 8px;
 }
+
+.modalBody {
+  display: flex;
+  align-items: center;
+}
+
+.loadingNotice {
+  font-size: 16px;
+  text-align: center;
+  margin: 8px;
+}

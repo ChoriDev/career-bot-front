@@ -34,15 +34,30 @@ function Result() {
             <thead>
               <tr>
                 <th>분류</th>
+                <th>코멘트</th>
                 <th>진로 성숙도</th>
               </tr>
             </thead>
             <tbody>
               {responseData &&
                 Object.entries(responseData).map(
-                  ([category, maturity], index) => (
+                  ([category, [comments, maturity]], index) => (
                     <tr key={index}>
                       <td>{category}</td>
+                      <td>
+                        {comments.filter((comment) => comment !== null).length >
+                        0 ? (
+                          <ul>
+                            {comments
+                              .filter((comment) => comment !== null)
+                              .map((comment, i) => (
+                                <li key={i}>{comment}</li>
+                              ))}
+                          </ul>
+                        ) : (
+                          <span>코멘트가 없습니다</span>
+                        )}
+                      </td>
                       <td className={styles.progressBarBox}>
                         <CircularProgressbar
                           maxValue={3}

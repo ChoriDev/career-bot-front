@@ -24,8 +24,8 @@ npm install react-bootstrap bootstrap
 
 5. 리액트 원형 프로그래스바 설치
 
-``` shell
-npm install --save react-circular-progressbar
+```shell
+npm install react-circular-progressbar
 ```
 
 6. axios 설치

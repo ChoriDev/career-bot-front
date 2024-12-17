@@ -34,6 +34,7 @@ function Result() {
             <thead>
               <tr>
                 <th>분류</th>
+                <th>학생이 작성한 문장</th>
                 <th>코멘트</th>
                 <th>진로 성숙도</th>
               </tr>
@@ -41,32 +42,51 @@ function Result() {
             <tbody>
               {responseData &&
                 Object.entries(responseData).map(
-                  ([category, [comments, maturity]], index) => (
-                    <tr key={index}>
-                      <td>{category}</td>
-                      <td>
-                        {comments.filter((comment) => comment !== null).length >
-                        0 ? (
-                          <ul>
-                            {comments
-                              .filter((comment) => comment !== null)
-                              .map((comment, i) => (
+                  ([category, data], index) => {
+                    const { student_sentences, comments, average_grade } = data;
+
+                    return (
+                      <tr key={index}>
+                        {/* 카테고리 */}
+                        <td>{category}</td>
+
+                        {/* 완전한 문장 출력 */}
+                        <td>
+                          {student_sentences.length > 0 ? (
+                            <ul>
+                              {student_sentences.map((sentence, i) => (
+                                <li key={i}>{sentence}</li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <span>문장이 없습니다</span>
+                          )}
+                        </td>
+
+                        {/* 코멘트 출력 */}
+                        <td>
+                          {comments.length > 0 ? (
+                            <ul>
+                              {comments.map((comment, i) => (
                                 <li key={i}>{comment}</li>
                               ))}
-                          </ul>
-                        ) : (
-                          <span>코멘트가 없습니다</span>
-                        )}
-                      </td>
-                      <td className={styles.progressBarBox}>
-                        <CircularProgressbar
-                          maxValue={3}
-                          value={maturity.toFixed(2)}
-                          text={maturity.toFixed(2)}
-                        />
-                      </td>
-                    </tr>
-                  )
+                            </ul>
+                          ) : (
+                            <span>코멘트가 없습니다</span>
+                          )}
+                        </td>
+
+                        {/* 진로 성숙도 시각화 */}
+                        <td className={styles.progressBarBox}>
+                          <CircularProgressbar
+                            maxValue={3}
+                            value={average_grade.toFixed(2)}
+                            text={average_grade.toFixed(2)}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  }
                 )}
             </tbody>
           </Table>
